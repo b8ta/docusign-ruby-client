@@ -383,10 +383,10 @@ module DocuSign_eSign
     end
 
 
-    def configure_jwt_authorization_flow(private_key_filename, oauth_base_path, client_id, user_id, expires_in)
+    def configure_jwt_authorization_flow(private_key_string, oauth_base_path, client_id, user_id, expires_in)
       now = Time.now.to_i
       later = now + expires_in
-      private_key = OpenSSL::PKey::RSA.new(File.read(private_key_filename));
+      private_key = OpenSSL::PKey::RSA.new(private_key_string);
 
       payload = {
                         :iss => client_id,
